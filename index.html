@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chrisoft::Sound of Sorting</title>
+<script type="text/javascript" src="main.js"></script>
+<style>
+button{
+	border:none;
+	color:white;
+	padding:0.5em 2em;
+	text-align:center;
+	background-color:#44AA44;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+}
+button:hover{
+	background-color:#66CC66;
+}
+input[type=range]{
+	-webkit-appearance:none;
+}
+input[type=range]:focus{
+	outline:none;
+}
+input[type=range]::-webkit-slider-runnable-track{
+	width:100%;
+	height:8.4px;
+	animate:0.2s;
+	box-shadow:1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	background:#44AA44;
+	border-radius:1.3px;
+	border:0.2px solid #010101;
+}
+input[type=range]::-moz-range-track{
+	width:100%;
+	height:8.4px;
+	animate:0.2s;
+	box-shadow:1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	background:#44AA44;
+	border-radius:1.3px;
+	border:0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb{
+	box-shadow:1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border:1px solid #000000;
+	height:24px;
+	width:12px;
+	border-radius:1px;
+	background:#ffffff;
+	-webkit-appearance:none;
+	margin-top:-8px;
+}
+input[type=range]::-moz-range-thumb{
+	box-shadow:1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border:1px solid #000000;
+	height:24px;
+	width:12px;
+	border-radius:1px;
+	background:#ffffff;
+	-webkit-appearance:none;
+	margin-top:-8px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track{
+	background:#66CC66;
+}
+input[type=range]:focus::-moz-range-track{
+	background:#66CC66;
+}
+select{
+	background-color:#EEE;
+	border:1px #AAA solid;
+	padding:0.2em 0.2em;
+}
+</style>
+</head>
+<body onload="init()">
+	<div style="text-align:center;">
+		<canvas id="cvs" width="1600" height="600"></canvas><br>
+		<form>
+			<label for="sel">Algorithm</label>
+			<select id="sel">
+				<option value="BubbleSort">Bubble Sort</option>
+				<option value="SelectSort">Selection Sort</option>
+				<option value="InsertSort">Insertion Sort</option>
+				<option value="ShakerSort">Cocktail Shaker Sort</option>
+				<option value="CombSort">Comb Sort</option>
+				<option value="ShellSort">Shell Sort</option>
+				<option value="QuickSort">Quick Sort</option>
+				<option value="MergeSort">Merge Sort</option>
+				<option value="HeapSort">Heap Sort</option>
+				<option value="LSDRadixSort">LSD Radix Sort</option>
+				<option value="MSDRadixSort">MSD Radix Sort</option>
+			</select>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="data">Data to sort</label>
+			<select id="data">
+				<option value="rnd">Random Shuffle</option>
+				<option value="asc">Ascending</option>
+				<option value="dec">Descending</option>
+				<option value="cub">Shuffled Cubic</option>
+				<option value="qui">Shuffled Quintic</option>
+			</select>
+			<br>
+			<div style="margin-top:.5em;margin-bottom:.1em;">
+			<button type="button" onclick="h.shuffle();">Reset</button>
+			<button type="button" onclick="h.execute();">Run</button>
+			<button type="button" onclick="h.step();">Step</button>
+			</div>
+			<br>
+			<label for="count">Array size:</label>
+			<input type="range" id="count" min="1" max="1024" value="100" step="1">
+			<span id="lbcnt">100</span>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="spd">Delay between steps:</label>
+			<input type="range" id="spd" min="5" max="200" value="20" step="5">
+			<span id="lbspd">20ms</span>
+		</form>
+		<p>
+			Read Access: <span id="racc"></span><br>
+			Write Access: <span id="wacc"></span>
+		</p>
+		<form>
+		<fieldset id="optw" style="border:none;">
+		</fieldset>
+		<form>
+	</div>
+</body>
